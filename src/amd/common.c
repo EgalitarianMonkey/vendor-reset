@@ -147,12 +147,13 @@ int smu_wait(struct amd_fake_dev *adev)
   u32 ret;
   int timeout;
 
-  for (timeout = 100000;
-       timeout &&
-       (RREG32_SOC15(MP1, 0, mmMP1_SMN_C2PMSG_90) & MP1_C2PMSG_90__CONTENT_MASK) == 0;
-       --timeout)
+  for (timeout = 100000; timeout > 0; --timeout) {
+    ret = RREG32_SOC15(MP1, 0, mmMP1_SMN_C2PMSG_90);
+    if ((ret & MP1_C2PMSG_90__CONTENT_MASK) != 0)
+      break;
     udelay(1);
-  if ((ret = RREG32_SOC15(MP1, 0, mmMP1_SMN_C2PMSG_90)) != 0x1)
+  }
+  if (ret != 0x1)
     pci_info(adev_to_amd_private(adev)->vdev->pdev, "SMU error 0x%x\n", ret);
 
   return ret;

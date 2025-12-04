@@ -93,23 +93,21 @@ static inline bool drm_can_sleep(void)
 #define REG_GET_FIELD(value, reg, field) \
   (((value)&REG_FIELD_MASK(reg, field)) >> REG_FIELD_SHIFT(reg, field))
 
-/* from smu_cm.c */
 /*
  * Although these are defined in each ASIC's specific header file.
  * They share the same definitions and values. That makes common
  * APIs for SMC messages issuing for all ASICs possible.
  */
+// message register
 #define mmMP1_SMN_C2PMSG_66 0x0282
 #define mmMP1_SMN_C2PMSG_66_BASE_IDX 0
-
+// parameter register
 #define mmMP1_SMN_C2PMSG_82 0x0292
 #define mmMP1_SMN_C2PMSG_82_BASE_IDX 0
-
+// response register
 #define mmMP1_SMN_C2PMSG_90 0x029a
 #define mmMP1_SMN_C2PMSG_90_BASE_IDX 0
-
 #define MP1_C2PMSG_90__CONTENT_MASK 0xFFFFFFFFL
-/* end from smu_cm.c */
 
 #include "compat.h"
 

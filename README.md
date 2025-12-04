@@ -53,17 +53,18 @@ updating your initrd.
 
 ## Supported Devices
 
-| Vendor | Family | Common Name(s)
-|---|---|---|
-|AMD|Polaris 10| RX 470, 480, 570, 580, 590
-|AMD|Polaris 11| RX 460, 560
-|AMD|Polaris 12| RX 540, 550
-|AMD|Vega 10| Vega 56/64/FE |
-|AMD|Vega 20| Radeon VII |
-|AMD|Vega 20| Instinct MI100 |
-|AMD|Navi 10| 5600XT, 5700, 5700XT
-|AMD|Navi 12| Pro 5600M |
-|AMD|Navi 14| Pro 5300, RX 5300, 5500XT
+| Vendor | Family     | Common Name(s)             |
+|--------|------------|----------------------------|
+| AMD    | Polaris 10 | RX 470, 480, 570, 580, 590 | 
+| AMD    | Polaris 11 | RX 460, 560                |
+| AMD    | Polaris 12 | RX 540, 550                |
+| AMD    | Vega 10    | Vega 56/64/FE              |
+| AMD    | Vega 20    | Radeon VII                 |
+| AMD    | Vega 20    | Instinct MI100             |
+| AMD    | Navi 10    | 5600XT, 5700, 5700XT       |
+| AMD    | Navi 12    | Pro 5600M                  |
+| AMD    | Navi 14    | Pro 5300, RX 5300, 5500XT  |
+| AMD    | Navi 32    | RX 7800 XT                 |
 
 ## Developing
 
@@ -77,3 +78,7 @@ please first consider two things:
 
 If you answer yes to either of these questions this project is not for you.
 
+## Additional resources
+
+- [Linux Kernel documentation - AMDGPU Hardware List](https://docs.kernel.org/gpu/amdgpu/amd-hardware-list-info.html)
+- [AMD GPUopen - GPU architecture programming documentation](https://gpuopen.com/amd-gpu-architecture-programming-documentation/)
