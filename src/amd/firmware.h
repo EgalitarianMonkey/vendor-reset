@@ -25,4 +25,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA
 int atom_bios_init(struct amd_fake_dev *adev);
 void atom_bios_fini(struct amd_fake_dev *adev);
 
+u32 amdgpu_io_rreg(struct amd_fake_dev *adev, u32 reg);
+void amdgpu_io_wreg(struct amd_fake_dev *adev, u32 reg, u32 v);
+
 #endif

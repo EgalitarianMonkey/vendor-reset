@@ -72,5 +72,6 @@ extern bool soc15_baco_program_registers(struct amd_fake_dev *adev,
 																				 const struct soc15_baco_cmd_entry *entry,
 																				 const u32 array_size);
 extern int smu9_baco_get_state(struct amd_fake_dev *adev, enum BACO_STATE *state);
+extern int vega10_baco_set_state(struct amd_fake_dev *adev, enum BACO_STATE state);
 
 #endif

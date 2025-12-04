@@ -42,6 +42,8 @@ struct ftrace_hook
     .function = (replacement),         \
   }
 
+int fh_install_hook(struct ftrace_hook *hook);
+void fh_remove_hook(struct ftrace_hook *hook);
 int fh_install_hooks(struct ftrace_hook *hooks);
 void fh_remove_hooks(struct ftrace_hook *hooks);
 

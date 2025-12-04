@@ -28,6 +28,7 @@
 
 #include "atom.h"
 #include "common.h"
+#include "amdgpu_bios.h"
 
 #include <linux/pci.h>
 #include <linux/slab.h>

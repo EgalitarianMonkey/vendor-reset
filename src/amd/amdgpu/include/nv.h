@@ -33,6 +33,8 @@ int nv_set_ip_blocks(struct amd_fake_dev *adev);
 int navi10_reg_base_init(struct amd_fake_dev *adev);
 int navi14_reg_base_init(struct amd_fake_dev *adev);
 int navi12_reg_base_init(struct amd_fake_dev *adev);
+int vega10_reg_base_init(struct amd_fake_dev *adev);
+int vega20_reg_base_init(struct amd_fake_dev *adev);
 int sienna_cichlid_reg_base_init(struct amd_fake_dev *adev);
 void vangogh_reg_base_init(struct amd_fake_dev *adev);
 int dimgrey_cavefish_reg_base_init(struct amd_fake_dev *adev);

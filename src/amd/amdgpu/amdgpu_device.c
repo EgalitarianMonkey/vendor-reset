@@ -28,6 +28,7 @@
 
 #include <linux/module.h>
 
+#include "amdgpu_device.h"
 #include "common_defs.h"
 #include "common.h"
 
