@@ -20,12 +20,10 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-
-#ifndef SMU_V13_0_0_PPSMC_H
-#define SMU_V13_0_0_PPSMC_H
+#ifndef SMU_V13_0_7_PPSMC_H
+#define SMU_V13_0_7_PPSMC_H
 
 #define PPSMC_VERSION 0x1
-#define DEBUGSMC_VERSION    0x1
 
 // SMU Response Codes:
 #define PPSMC_Result_OK                    0x1
@@ -87,14 +85,13 @@
 #define PPSMC_MSG_AllowGfxOff                    0x28
 #define PPSMC_MSG_DisallowGfxOff                 0x29
 #define PPSMC_MSG_PowerUpVcn                     0x2A
-#define PPSMC_MSG_PowerDownVcn	                 0x2B
+#define PPSMC_MSG_PowerDownVcn                   0x2B
 #define PPSMC_MSG_PowerUpJpeg                    0x2C
-#define PPSMC_MSG_PowerDownJpeg	                 0x2D
+#define PPSMC_MSG_PowerDownJpeg                  0x2D
 
 //Resets
 #define PPSMC_MSG_PrepareMp1ForUnload            0x2E
 #define PPSMC_MSG_Mode1Reset                     0x2F
-#define PPSMC_MSG_Mode2Reset					 0x4F
 
 //Set SystemVirtual DramAddrHigh
 #define PPSMC_MSG_SetSystemVirtualDramAddrHigh   0x30
@@ -108,8 +105,7 @@
 //BTC
 #define PPSMC_MSG_RunDcBtc                       0x36
 
-//Debug
-#define PPSMC_MSG_GetDebugData                   0x37
+//                                               0x37
 
 //Others
 #define PPSMC_MSG_SetTemperatureInputSelect      0x38
@@ -138,13 +134,7 @@
 #define PPSMC_MSG_SetBadMemoryPagesRetiredFlagsPerChannel 0x4A
 #define PPSMC_MSG_SetPriorityDeltaGain           0x4B
 #define PPSMC_MSG_AllowIHHostInterrupt           0x4C
-#define PPSMC_MSG_DALNotPresent                  0x4E
 #define PPSMC_MSG_EnableUCLKShadow               0x51
 #define PPSMC_Message_Count                      0x52
 
-//Debug Dump Message
-#define DEBUGSMC_MSG_TestMessage                    0x1
-#define DEBUGSMC_MSG_GetDebugData                   0x2
-#define DEBUGSMC_MSG_DebugDumpExit                  0x3
-#define DEBUGSMC_Message_Count                      0x4
 #endif

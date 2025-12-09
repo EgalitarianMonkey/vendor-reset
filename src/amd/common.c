@@ -183,7 +183,7 @@ int smum_send_msg_to_smc_with_parameter(struct amd_fake_dev *adev, uint16_t msg,
   }
 
   if (resp)
-    *resp = RREG32_SOC15(MP1, 0, mmMP1_SMN_C2PMSG_82);
+    *resp = RREG32_SOC15(MP1, 0, mmMP1_SMN_C2PMSG_90);
 
   ret = ret != 0x01;
 

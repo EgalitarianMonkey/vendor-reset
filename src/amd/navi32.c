@@ -29,7 +29,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA
 #include "nv.h"
 #include "psp_gfx_if.h"
 #include "smu_v13_0.h"
-#include "smu_v13_0_0_ppsmc.h"
+#include "smu_v13_0_7_ppsmc.h"
 // nbio constants are used in common.h and common.c, so we don't include the "correct" header file here.
 // As only names of used symbols have changed and all actual values remain the same, this is okay.
 //#include "nbio/nbio_4_3_0_offset.h"
@@ -101,7 +101,7 @@ static int amd_navi32_reset(struct vendor_reset_dev *dev)
           psp_bl_ready ? "yes" : "no");
 
   /* okay, if we're in this state, we're probably reset */
-  if (sol == 0x0 && !mp1_intr && psp_bl_ready)
+  if (sol == 0x0 && psp_bl_ready)
     goto free_adev;
 
   /* this tells the drivers nvram is lost and everything needs to be reset */
@@ -109,42 +109,8 @@ static int amd_navi32_reset(struct vendor_reset_dev *dev)
   WREG32(adev->bios_scratch_reg_offset + 6, 0);
   WREG32(adev->bios_scratch_reg_offset + 7, 0);
 
-  /* it only makes sense to reset mp1 if it's running
-   * XXX: is this even necessary? in early testing, I ran into
-   * situations where MP1 was alive but not responsive, but in
-   * later testing I have not been able to replicate this scenario.
-   */
-  if (smu_resp != 0x01 && mp1_intr)
-  {
-    vr_info(dev, "MP1 reset\n");
-
-    WREG32_PCIE(MP1_Public | (smnMP1_PUB_CTRL & 0xffffffff),
-                1 & MP1_SMN_PUB_CTRL__LX3_RESET_MASK);
-    WREG32_PCIE(MP1_Public | (smnMP1_PUB_CTRL & 0xffffffff),
-                1 & ~MP1_SMN_PUB_CTRL__LX3_RESET_MASK);
-
-    vr_info(dev, "wait for MP1\n");
-    for (timeout = 100000; timeout; --timeout)
-    {
-      tmp = RREG32_PCIE(MP1_Public |
-                        (smnMP1_FIRMWARE_FLAGS & 0xffffffff));
-      if ((tmp &
-           MP1_FIRMWARE_FLAGS__INTERRUPTS_ENABLED_MASK) >>
-          MP1_FIRMWARE_FLAGS__INTERRUPTS_ENABLED__SHIFT)
-        break;
-      udelay(1);
-    }
-    if (!timeout) {
-      vr_warn(dev, "timed out waiting for MP1 reset\n");
-    }
-
-    smu_wait(adev);
-    smu_resp = RREG32_SOC15(MP1, 0, mmMP1_SMN_C2PMSG_90);
-    vr_info(dev, "SMU resp reg: %x\n", smu_resp);
-  }
-
   /*
-   * again, this only makes sense if we have an SMU to talk to
+   * this only makes sense if we have an SMU to talk to.
    * some of these may fail, that's okay. we're just turning off as many
    * things as possible
    */
@@ -174,7 +140,7 @@ static int amd_navi32_reset(struct vendor_reset_dev *dev)
   tmp = psp_wait_for(adev, offset, 0x80000000, 0x80000000, false);
   if (tmp)
   {
-    vr_warn(dev, "PSP did not acknowledger reset\n");
+    vr_warn(dev, "PSP did not acknowledge reset\n");
     ret = -EINVAL;
     goto out;
   }
