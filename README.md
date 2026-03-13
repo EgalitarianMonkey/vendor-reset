@@ -53,6 +53,7 @@ updating your initrd.
 
 ## Supported Devices
 
+
 | Vendor | Family | Common Name(s)
 |---|---|---|
 |AMD|Polaris 10| RX 470, 480, 570, 580, 590
@@ -64,6 +65,7 @@ updating your initrd.
 |AMD|Navi 10| 5600XT, 5700, 5700XT
 |AMD|Navi 12| Pro 5600M |
 |AMD|Navi 14| Pro 5300, RX 5300, 5500XT
+|AMD|Navi 31| RX 7900 XTX, RX 7900 XT
 
 ## Developing
 
@@ -76,4 +78,3 @@ please first consider two things:
    (see: kernel/drivers/pci/quirk.c)?
 
 If you answer yes to either of these questions this project is not for you.
-
